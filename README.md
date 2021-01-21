@@ -10,7 +10,7 @@ Libraries for various PIC microcontrollers.
 - SPI
 - UART
 
-### PIC16F18325
+## PIC16F18325
 
 ### TODO
 - I2C
