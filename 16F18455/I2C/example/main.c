@@ -12,9 +12,6 @@
 #define PPS_UNLOCK      PPSLOCK = 0x55; PPSLOCK = 0xAA; PPSLOCK = 0x00
 #define PPS_LOCK        PPSLOCK = 0x55; PPSLOCK = 0xAA; PPSLOCK = 0x01
 
-// Global vars to see in debugger
-uint8_t high, low;
-
 void main(void) {
     GIE = 0;
     PPS_UNLOCK;
@@ -30,15 +27,10 @@ void main(void) {
     GIE = 1;
     
     ANSELC = 0x00;
+
+    uint8_t high, low;
     
-    // Master mode
-    SSP1CON1bits.SSPM = 0b1000;
-    // 100 kHz
-    SSP1ADD = 79;
-    SSP1IF = 0;
-    SSP1CON1bits.SSPEN = 1;
-    
-    // Start bit
+    I2C_Init();
     I2C_Start();
     I2C_Write(W(0x51));
     I2C_Write(0x0E);

@@ -7,6 +7,7 @@
 #define W(a)        (a << 1) & 0xFE
 #define R(a)        (a << 1) | 0x01
 
+void I2C_Init();
 void I2C_Wait();
 void I2C_Start();
 void I2C_Restart();

@@ -1,5 +1,14 @@
 #include "i2c.h"
 
+void I2C_Init() {
+    // Master mode
+    SSP1CON1bits.SSPM = 0b1000;
+    // 100 kHz - 79; 400 kHz - 19
+    SSP1ADD = 79;
+    SSP1IF = 0;
+    SSP1CON1bits.SSPEN = 1;
+}
+
 void I2C_Wait()
 {
     for(int i = 0; i < I2C_TIMEOUT && (SSP1STATbits.R_nW || SSP1CON2 & 0x1f); i++);
