@@ -5,10 +5,10 @@ Libraries for various PIC microcontrollers.
 
 ### Included
 - I2C
+- UART
 
 ### TODO
 - SPI
-- UART
 
 ## PIC16F18325
 

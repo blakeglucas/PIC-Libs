@@ -2,7 +2,9 @@
 
 void UART_Init(unsigned int baud) {
     // Set baudrate generator
-    SP1BRG = (unsigned int) _XTAL_FREQ / (64 * baud) - 1;
+    // TODO This has overflow problems.
+    // SP1BRG = (unsigned int) _XTAL_FREQ / (64 * baud) - 1;
+    SP1BRG = 51;    // 9600 baud
     // Enable receive interrupts
     RC1IE = 1;
     // Asynchronous mode
